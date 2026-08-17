@@ -1,362 +1,204 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// =============================
+// IR AL MENÚ
+// =============================
 
-html {
-    scroll-behavior: smooth;
-}
+function irAlMenu() {
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f8fb;
-    color: #263238;
+    document
+        .getElementById("menu")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
+// =============================
+// PACIENTES
+// =============================
 
-header {
-    width: 100%;
-    height: 70px;
-    background: #087f8c;
+function mostrarPacientes() {
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    const resultado =
+        document.getElementById("resultado");
 
-    padding: 0 8%;
+    resultado.innerHTML = `
 
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+        <h3>👤 Pacientes registrados</h3>
+
+        <table>
+
+            <tr>
+                <th>Paciente</th>
+                <th>Edad</th>
+                <th>Enfermedad</th>
+                <th>Estado</th>
+            </tr>
+
+            <tr>
+                <td>María López</td>
+                <td>58</td>
+                <td>Diabetes</td>
+                <td class="activo">● Activo</td>
+            </tr>
+
+            <tr>
+                <td>Juan Pérez</td>
+                <td>67</td>
+                <td>Hipertensión</td>
+                <td class="activo">● Activo</td>
+            </tr>
+
+            <tr>
+                <td>Pedro García</td>
+                <td>72</td>
+                <td>Diabetes</td>
+                <td class="inactivo">● Inactivo</td>
+            </tr>
+
+        </table>
+
+    `;
 }
 
-.logo {
-    color: white;
-    font-size: 23px;
-    font-weight: bold;
+
+// =============================
+// MEDICAMENTOS
+// =============================
+
+function mostrarMedicamentos() {
+
+    const resultado =
+        document.getElementById("resultado");
+
+    resultado.innerHTML = `
+
+        <h3>💊 Control de medicamentos</h3>
+
+        <table>
+
+            <tr>
+                <th>Paciente</th>
+                <th>Medicamento</th>
+                <th>Dosis</th>
+                <th>Horario</th>
+            </tr>
+
+            <tr>
+                <td>María López</td>
+                <td>Metformina</td>
+                <td>500 mg</td>
+                <td>8:00 AM</td>
+            </tr>
+
+            <tr>
+                <td>Juan Pérez</td>
+                <td>Losartán</td>
+                <td>50 mg</td>
+                <td>7:00 AM</td>
+            </tr>
+
+        </table>
+
+    `;
 }
 
-nav {
-    display: flex;
-    gap: 30px;
+
+// =============================
+// EXÁMENES
+// =============================
+
+function mostrarExamenes() {
+
+    const resultado =
+        document.getElementById("resultado");
+
+    resultado.innerHTML = `
+
+        <h3>🧪 Exámenes clínicos</h3>
+
+        <table>
+
+            <tr>
+                <th>Paciente</th>
+                <th>Examen</th>
+                <th>Fecha</th>
+                <th>Resultado</th>
+            </tr>
+
+            <tr>
+                <td>María López</td>
+                <td>Glucosa</td>
+                <td>15/08/2026</td>
+                <td>Normal</td>
+            </tr>
+
+            <tr>
+                <td>Juan Pérez</td>
+                <td>Presión arterial</td>
+                <td>14/08/2026</td>
+                <td>Controlada</td>
+            </tr>
+
+        </table>
+
+    `;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+
+// =============================
+// ESTADO DEL PACIENTE
+// =============================
+
+function mostrarEstado() {
+
+    const resultado =
+        document.getElementById("resultado");
+
+    resultado.innerHTML = `
+
+        <h3>📊 Estado de pacientes</h3>
+
+        <p>
+            <strong>María López:</strong>
+            <span class="activo">
+                ● ACTIVO
+            </span>
+        </p>
+
+        <p>
+            <strong>Juan Pérez:</strong>
+            <span class="activo">
+                ● ACTIVO
+            </span>
+        </p>
+
+        <p>
+            <strong>Pedro García:</strong>
+            <span class="inactivo">
+                ● INACTIVO
+            </span>
+        </p>
+
+    `;
 }
 
-nav a:hover {
-    color: #b8f3f5;
-}
 
+// =============================
+// CONTACTO
+// =============================
 
-/* =========================
-   INICIO
-========================= */
+function enviarMensaje(event) {
 
-.hero {
-    min-height: 500px;
+    event.preventDefault();
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    const nombre =
+        document.getElementById("nombre").value;
 
-    padding: 70px 10%;
-
-    background: linear-gradient(
-        135deg,
-        #e7f9fa,
-        #ffffff
+    alert(
+        "Gracias " +
+        nombre +
+        ". Su mensaje ha sido enviado correctamente."
     );
-}
 
-.hero-text {
-    max-width: 600px;
-}
-
-.hero-text h1 {
-    font-size: 45px;
-    color: #087f8c;
-    margin-bottom: 20px;
-}
-
-.hero-text p {
-    font-size: 19px;
-    line-height: 1.7;
-    margin-bottom: 30px;
-}
-
-.hero button,
-.card button,
-.contacto button {
-    background: #087f8c;
-    color: white;
-
-    border: none;
-    padding: 13px 25px;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #055e68;
-}
-
-.hero-icon {
-    font-size: 160px;
-}
-
-
-/* =========================
-   MENÚ
-========================= */
-
-.menu-section {
-    padding: 70px 8%;
-    text-align: center;
-}
-
-.menu-section h2,
-.contacto h2 {
-    color: #087f8c;
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-
-.descripcion {
-    margin-bottom: 40px;
-    color: #607d8b;
-}
-
-.cards {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 25px;
-}
-
-
-/* TARJETAS */
-
-.card {
-    background: white;
-
-    padding: 30px 20px;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.card .icon {
-    font-size: 50px;
-    margin-bottom: 15px;
-}
-
-.card h3 {
-    color: #087f8c;
-    margin-bottom: 15px;
-}
-
-.card p {
-    line-height: 1.5;
-    margin-bottom: 20px;
-    color: #607d8b;
-}
-
-
-/* =========================
-   RESULTADO
-========================= */
-
-.resultado {
-    margin-top: 40px;
-
-    background: white;
-
-    min-height: 150px;
-
-    padding: 30px;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.08);
-
-    text-align: left;
-}
-
-.resultado h3 {
-    color: #087f8c;
-    margin-bottom: 15px;
-}
-
-
-/* TABLAS */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th,
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background: #087f8c;
-    color: white;
-}
-
-
-/* ESTADOS */
-
-.activo {
-    color: green;
-    font-weight: bold;
-}
-
-.inactivo {
-    color: red;
-    font-weight: bold;
-}
-
-
-/* =========================
-   CONTACTO
-========================= */
-
-.contacto {
-    padding: 70px 10%;
-    background: #e7f9fa;
-
-    text-align: center;
-}
-
-.contacto p {
-    margin: 15px 0 30px;
-}
-
-form {
-    max-width: 600px;
-    margin: auto;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 15px;
-}
-
-input,
-textarea {
-    width: 100%;
-
-    padding: 14px;
-
-    border: 1px solid #ccd9dd;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-}
-
-textarea {
-    height: 130px;
-    resize: none;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    background: #075b64;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 35px;
-}
-
-footer h3 {
-    margin-bottom: 10px;
-}
-
-footer p {
-    margin: 7px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 900px) {
-
-    .cards {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-icon {
-        margin-top: 30px;
-    }
-}
-
-
-@media (max-width: 600px) {
-
-    header {
-        height: auto;
-        padding: 20px;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav {
-        gap: 15px;
-    }
-
-    .hero-text h1 {
-        font-size: 32px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-icon {
-        font-size: 100px;
-    }
+    document.querySelector("form").reset();
 }
