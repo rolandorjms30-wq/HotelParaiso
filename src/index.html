@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRONICARE - Sistema de Pacientes Crónicos</title>
 
-    <!-- CORRECCIÓN IMPORTANTE -->
+    <!-- Enlace CORRECTO al CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -13,9 +13,7 @@
 
     <!-- BARRA DE NAVEGACIÓN -->
     <header>
-        <div class="logo">
-            🩺 PacienCare
-        </div>
+        <div class="logo">🩺 PacienCare</div>
 
         <nav>
             <a href="#inicio">Inicio</a>
@@ -36,14 +34,10 @@
                 medicamentos y exámenes clínicos.
             </p>
 
-            <button onclick="irAlMenu()">
-                Ingresar al sistema
-            </button>
+            <button onclick="irAlMenu()">Ingresar al sistema</button>
         </div>
 
-        <div class="hero-icon">
-            🏥
-        </div>
+        <div class="hero-icon">🏥</div>
 
     </section>
 
@@ -63,62 +57,32 @@
             <div class="card">
                 <div class="icon">👤</div>
                 <h3>Pacientes</h3>
-
-                <p>
-                    Registra y consulta la información de los pacientes crónicos.
-                </p>
-
-                <button onclick="mostrarPacientes()">
-                    Ver pacientes
-                </button>
+                <p>Registra y consulta la información de los pacientes crónicos.</p>
+                <button onclick="mostrarPacientes()">Ver pacientes</button>
             </div>
-
 
             <!-- MEDICAMENTOS -->
             <div class="card">
                 <div class="icon">💊</div>
-
                 <h3>Medicamentos</h3>
-
-                <p>
-                    Controla los medicamentos asignados a cada paciente.
-                </p>
-
-                <button onclick="mostrarMedicamentos()">
-                    Ver medicamentos
-                </button>
+                <p>Controla los medicamentos asignados a cada paciente.</p>
+                <button onclick="mostrarMedicamentos()">Ver medicamentos</button>
             </div>
-
 
             <!-- EXÁMENES -->
             <div class="card">
                 <div class="icon">🧪</div>
-
                 <h3>Exámenes clínicos</h3>
-
-                <p>
-                    Registra y consulta los exámenes realizados por los pacientes.
-                </p>
-
-                <button onclick="mostrarExamenes()">
-                    Ver exámenes
-                </button>
+                <p>Registra y consulta los exámenes realizados por los pacientes.</p>
+                <button onclick="mostrarExamenes()">Ver exámenes</button>
             </div>
-
 
             <!-- ESTADO -->
             <div class="card">
                 <div class="icon">📊</div>
-
                 <h3>Estado del paciente</h3>
-
-                <p>
-                    Consulta si un paciente se encuentra activo o inactivo.
-                </p>
-
-                <button onclick="mostrarEstado()">
-                    Consultar estado
-                </button>
+                <p>Consulta si un paciente se encuentra activo o inactivo.</p>
+                <button onclick="mostrarEstado()">Consultar estado</button>
             </div>
 
         </div>
@@ -126,13 +90,8 @@
 
         <!-- ÁREA DE INFORMACIÓN -->
         <div id="resultado" class="resultado">
-
             <h3>Información del sistema</h3>
-
-            <p>
-                Selecciona una de las opciones anteriores para comenzar.
-            </p>
-
+            <p>Selecciona una de las opciones anteriores para comenzar.</p>
         </div>
 
     </section>
@@ -143,36 +102,13 @@
 
         <h2>Contáctenos</h2>
 
-        <p>
-            ¿Necesitas información o tienes algún problema con el sistema?
-        </p>
+        <p>¿Necesitas información o tienes algún problema con el sistema?</p>
 
         <form onsubmit="enviarMensaje(event)">
-
-            <input
-                type="text"
-                id="nombre"
-                placeholder="Nombre completo"
-                required
-            >
-
-            <input
-                type="email"
-                id="correo"
-                placeholder="Correo electrónico"
-                required
-            >
-
-            <textarea
-                id="mensaje"
-                placeholder="Escriba su mensaje..."
-                required
-            ></textarea>
-
-            <button type="submit">
-                Enviar mensaje
-            </button>
-
+            <input type="text" id="nombre" placeholder="Nombre completo" required>
+            <input type="email" id="correo" placeholder="Correo electrónico" required>
+            <textarea id="mensaje" placeholder="Escriba su mensaje..." required></textarea>
+            <button type="submit">Enviar mensaje</button>
         </form>
 
     </section>
@@ -180,20 +116,13 @@
 
     <!-- PIE DE PÁGINA -->
     <footer>
-
         <h3>PACIENCARE</h3>
-
-        <p>
-            Sistema de gestión y control para pacientes crónicos.
-        </p>
-
-        <p>
-            © 2026 PACIENCARE, Tu Salud nos importa.
-        </p>
-
+        <p>Sistema de gestión y control para pacientes crónicos.</p>
+        <p>© 2026 PACIENCARE, Tu Salud nos importa.</p>
     </footer>
 
 
+    <!-- ARCHIVO JS -->
     <script src="script.js"></script>
 
 </body>
