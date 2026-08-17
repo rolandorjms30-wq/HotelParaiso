@@ -3,42 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Paraíso</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CRONICARE - Sistema de Pacientes Crónicos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header class="hero">
-        <div class="overlay"></div>
-        <h1>Descanso de lujo frente al mar</h1>
-        <a href="#habitaciones" class="btn">Consultar disponibilidad</a>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header>
+        <div class="logo">
+            🩺 CRONICARE
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#menu">Menú</a>
+            <a href="#contacto">Contáctenos</a>
+        </nav>
     </header>
 
-    <section id="habitaciones" class="habitaciones">
-        <h2>Habitaciones</h2>
+
+    <!-- INICIO -->
+    <section id="inicio" class="hero">
+
+        <div class="hero-text">
+            <h1>Sistema de Control para Pacientes Crónicos</h1>
+
+            <p>
+                Administra de manera sencilla la información de pacientes,
+                medicamentos y exámenes clínicos.
+            </p>
+
+            <button onclick="irAlMenu()">
+                Ingresar al sistema
+            </button>
+        </div>
+
+        <div class="hero-icon">
+            🏥
+        </div>
+
+    </section>
+
+
+    <!-- MENÚ -->
+    <section id="menu" class="menu-section">
+
+        <h2>Panel de Control</h2>
+
+        <p class="descripcion">
+            Selecciona una opción para administrar la información del paciente.
+        </p>
 
         <div class="cards">
 
+            <!-- PACIENTES -->
             <div class="card">
-                <img src="imagenes/habitacion-estandar.jpg" alt="Habitación Estándar">
-                <h3>Estándar</h3>
-                <p>Comodidad esencial para una estancia relajante.</p>
+                <div class="icon">👤</div>
+                <h3>Pacientes</h3>
+
+                <p>
+                    Registra y consulta la información de los pacientes crónicos.
+                </p>
+
+                <button onclick="mostrarPacientes()">
+                    Ver pacientes
+                </button>
             </div>
 
+
+            <!-- MEDICAMENTOS -->
             <div class="card">
-                <img src="imagenes/habitacion-superior.jpg" alt="Habitación Superior">
-                <h3>Superior</h3>
-                <p>Espacios amplios y vista parcial al mar.</p>
+                <div class="icon">💊</div>
+
+                <h3>Medicamentos</h3>
+
+                <p>
+                    Controla los medicamentos asignados a cada paciente.
+                </p>
+
+                <button onclick="mostrarMedicamentos()">
+                    Ver medicamentos
+                </button>
             </div>
 
+
+            <!-- EXÁMENES -->
             <div class="card">
-                <img src="imagenes/habitacion-suite.jpg" alt="Suite">
-                <h3>Suite</h3>
-                <p>Lujo total con vista panorámica y jacuzzi.</p>
+                <div class="icon">🧪</div>
+
+                <h3>Exámenes clínicos</h3>
+
+                <p>
+                    Registra y consulta los exámenes realizados por los pacientes.
+                </p>
+
+                <button onclick="mostrarExamenes()">
+                    Ver exámenes
+                </button>
+            </div>
+
+
+            <!-- ESTADO -->
+            <div class="card">
+                <div class="icon">📊</div>
+
+                <h3>Estado del paciente</h3>
+
+                <p>
+                    Consulta si un paciente se encuentra activo o inactivo.
+                </p>
+
+                <button onclick="mostrarEstado()">
+                    Consultar estado
+                </button>
             </div>
 
         </div>
+
+
+        <!-- ÁREA DE INFORMACIÓN -->
+        <div id="resultado" class="resultado">
+
+            <h3>Información del sistema</h3>
+
+            <p>
+                Selecciona una de las opciones anteriores para comenzar.
+            </p>
+
+        </div>
+
     </section>
+
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto">
+
+        <h2>Contáctenos</h2>
+
+        <p>
+            ¿Necesitas información o tienes algún problema con el sistema?
+        </p>
+
+        <form onsubmit="enviarMensaje(event)">
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Nombre completo"
+                required
+            >
+
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo electrónico"
+                required
+            >
+
+            <textarea
+                id="mensaje"
+                placeholder="Escriba su mensaje..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Enviar mensaje
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+
+        <h3>CRONICARE</h3>
+
+        <p>
+            Sistema de gestión y control para pacientes crónicos.
+        </p>
+
+        <p>
+            © 2026 CRONICARE - Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
