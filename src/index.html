@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Paraíso</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
 
+    <header class="hero">
+        <div class="overlay"></div>
+        <h1>Descanso de lujo frente al mar</h1>
+        <a href="#habitaciones" class="btn">Consultar disponibilidad</a>
+    </header>
+
+    <section id="habitaciones" class="habitaciones">
+        <h2>Habitaciones</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <img src="imagenes/habitacion-estandar.jpg" alt="Habitación Estándar">
+                <h3>Estándar</h3>
+                <p>Comodidad esencial para una estancia relajante.</p>
+            </div>
+
+            <div class="card">
+                <img src="imagenes/habitacion-superior.jpg" alt="Habitación Superior">
+                <h3>Superior</h3>
+                <p>Espacios amplios y vista parcial al mar.</p>
+            </div>
+
+            <div class="card">
+                <img src="imagenes/habitacion-suite.jpg" alt="Suite">
+                <h3>Suite</h3>
+                <p>Lujo total con vista panorámica y jacuzzi.</p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
 </html>
