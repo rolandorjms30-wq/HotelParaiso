@@ -1,204 +1,47 @@
-// =============================
-// IR AL MENÚ
-// =============================
-
+// Ir al menú
 function irAlMenu() {
-
-    document
-        .getElementById("menu")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
 }
 
-
-// =============================
-// PACIENTES
-// =============================
-
+// Mostrar pacientes
 function mostrarPacientes() {
-
-    const resultado =
-        document.getElementById("resultado");
-
-    resultado.innerHTML = `
-
-        <h3>👤 Pacientes registrados</h3>
-
-        <table>
-
-            <tr>
-                <th>Paciente</th>
-                <th>Edad</th>
-                <th>Enfermedad</th>
-                <th>Estado</th>
-            </tr>
-
-            <tr>
-                <td>María López</td>
-                <td>58</td>
-                <td>Diabetes</td>
-                <td class="activo">● Activo</td>
-            </tr>
-
-            <tr>
-                <td>Juan Pérez</td>
-                <td>67</td>
-                <td>Hipertensión</td>
-                <td class="activo">● Activo</td>
-            </tr>
-
-            <tr>
-                <td>Pedro García</td>
-                <td>72</td>
-                <td>Diabetes</td>
-                <td class="inactivo">● Inactivo</td>
-            </tr>
-
-        </table>
-
+    document.getElementById("resultado").innerHTML = `
+        <h3>Pacientes registrados</h3>
+        <p>Aquí aparecerá la lista de pacientes crónicos.</p>
     `;
 }
 
-
-// =============================
-// MEDICAMENTOS
-// =============================
-
+// Mostrar medicamentos
 function mostrarMedicamentos() {
-
-    const resultado =
-        document.getElementById("resultado");
-
-    resultado.innerHTML = `
-
-        <h3>💊 Control de medicamentos</h3>
-
-        <table>
-
-            <tr>
-                <th>Paciente</th>
-                <th>Medicamento</th>
-                <th>Dosis</th>
-                <th>Horario</th>
-            </tr>
-
-            <tr>
-                <td>María López</td>
-                <td>Metformina</td>
-                <td>500 mg</td>
-                <td>8:00 AM</td>
-            </tr>
-
-            <tr>
-                <td>Juan Pérez</td>
-                <td>Losartán</td>
-                <td>50 mg</td>
-                <td>7:00 AM</td>
-            </tr>
-
-        </table>
-
+    document.getElementById("resultado").innerHTML = `
+        <h3>Medicamentos</h3>
+        <p>Aquí aparecerán los medicamentos asignados a cada paciente.</p>
     `;
 }
 
-
-// =============================
-// EXÁMENES
-// =============================
-
+// Mostrar exámenes clínicos
 function mostrarExamenes() {
-
-    const resultado =
-        document.getElementById("resultado");
-
-    resultado.innerHTML = `
-
-        <h3>🧪 Exámenes clínicos</h3>
-
-        <table>
-
-            <tr>
-                <th>Paciente</th>
-                <th>Examen</th>
-                <th>Fecha</th>
-                <th>Resultado</th>
-            </tr>
-
-            <tr>
-                <td>María López</td>
-                <td>Glucosa</td>
-                <td>15/08/2026</td>
-                <td>Normal</td>
-            </tr>
-
-            <tr>
-                <td>Juan Pérez</td>
-                <td>Presión arterial</td>
-                <td>14/08/2026</td>
-                <td>Controlada</td>
-            </tr>
-
-        </table>
-
+    document.getElementById("resultado").innerHTML = `
+        <h3>Exámenes clínicos</h3>
+        <p>Aquí aparecerán los exámenes realizados por los pacientes.</p>
     `;
 }
 
-
-// =============================
-// ESTADO DEL PACIENTE
-// =============================
-
+// Mostrar estado del paciente
 function mostrarEstado() {
-
-    const resultado =
-        document.getElementById("resultado");
-
-    resultado.innerHTML = `
-
-        <h3>📊 Estado de pacientes</h3>
-
-        <p>
-            <strong>María López:</strong>
-            <span class="activo">
-                ● ACTIVO
-            </span>
-        </p>
-
-        <p>
-            <strong>Juan Pérez:</strong>
-            <span class="activo">
-                ● ACTIVO
-            </span>
-        </p>
-
-        <p>
-            <strong>Pedro García:</strong>
-            <span class="inactivo">
-                ● INACTIVO
-            </span>
-        </p>
-
+    document.getElementById("resultado").innerHTML = `
+        <h3>Estado del paciente</h3>
+        <p>Consulta si un paciente está activo o inactivo.</p>
     `;
 }
 
-
-// =============================
-// CONTACTO
-// =============================
-
+// Enviar mensaje del formulario
 function enviarMensaje(event) {
-
     event.preventDefault();
 
-    const nombre =
-        document.getElementById("nombre").value;
+    const nombre = document.getElementById("nombre").value;
+    const correo = document.getElementById("correo").value;
+    const mensaje = document.getElementById("mensaje").value;
 
-    alert(
-        "Gracias " +
-        nombre +
-        ". Su mensaje ha sido enviado correctamente."
-    );
-
-    document.querySelector("form").reset();
+    alert(`Mensaje enviado:\n\nNombre: ${nombre}\nCorreo: ${correo}\nMensaje: ${mensaje}`);
 }
