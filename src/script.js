@@ -1,3 +1,6 @@
+// URL de la API de PacienCare
+const API_URL = "https://paciencare-api-hpeha7ejgrdwadhw.centralus-01.azurewebsites.net";
+
 // Ir al menú
 function irAlMenu() {
     document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
@@ -35,13 +38,49 @@ function mostrarEstado() {
     `;
 }
 
-// Enviar mensaje del formulario
-function enviarMensaje(event) {
+// Enviar mensaje del formulario a la API
+async function enviarMensaje(event) {
     event.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const correo = document.getElementById("correo").value;
-    const mensaje = document.getElementById("mensaje").value;
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
 
-    alert(`Mensaje enviado:\n\nNombre: ${nombre}\nCorreo: ${correo}\nMensaje: ${mensaje}`);
+    if (!nombre || !correo || !mensaje) {
+        alert("Por favor completa todos los campos.");
+        return;
+    }
+
+    try {
+        const respuesta = await fetch(`${API_URL}/api/contactos`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                correo: correo,
+                mensaje: mensaje
+            })
+        });
+
+        if (!respuesta.ok) {
+            throw new Error(`Error HTTP: ${respuesta.status}`);
+        }
+
+        const datos = await respuesta.json();
+
+        alert("¡Mensaje enviado correctamente!");
+
+        // Limpiar formulario
+        document.getElementById("nombre").value = "";
+        document.getElementById("correo").value = "";
+        document.getElementById("mensaje").value = "";
+
+        console.log("Respuesta de la API:", datos);
+
+    } catch (error) {
+        console.error("Error al enviar:", error);
+        alert("No se pudo enviar el mensaje. Revisa la conexión con la API.");
+    }
 }
