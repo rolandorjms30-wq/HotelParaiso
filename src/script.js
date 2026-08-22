@@ -1,86 +1,169 @@
-// URL de la API de PacienCare
+// ============================================
+// CONFIGURACIÓN DE LA API
+// ============================================
+
 const API_URL = "https://paciencare-api-hpeha7ejgrdwadhw.centralus-01.azurewebsites.net";
 
-// Ir al menú
+// ============================================
+// IR AL MENÚ
+// ============================================
+
 function irAlMenu() {
-    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+    const menu = document.getElementById("menu");
+
+    if (menu) {
+        menu.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 }
 
-// Mostrar pacientes
+// ============================================
+// MOSTRAR PACIENTES
+// ============================================
+
 function mostrarPacientes() {
-    document.getElementById("resultado").innerHTML = `
-        <h3>Pacientes registrados</h3>
-        <p>Aquí aparecerá la lista de pacientes crónicos.</p>
-    `;
+    const resultado = document.getElementById("resultado");
+
+    if (resultado) {
+        resultado.innerHTML = `
+            <h3>Pacientes registrados</h3>
+            <p>Aquí aparecerá la lista de pacientes crónicos.</p>
+        `;
+    }
 }
 
-// Mostrar medicamentos
+// ============================================
+// MOSTRAR MEDICAMENTOS
+// ============================================
+
 function mostrarMedicamentos() {
-    document.getElementById("resultado").innerHTML = `
-        <h3>Medicamentos</h3>
-        <p>Aquí aparecerán los medicamentos asignados a cada paciente.</p>
-    `;
+    const resultado = document.getElementById("resultado");
+
+    if (resultado) {
+        resultado.innerHTML = `
+            <h3>Medicamentos</h3>
+            <p>Aquí aparecerán los medicamentos asignados a cada paciente.</p>
+        `;
+    }
 }
 
-// Mostrar exámenes clínicos
+// ============================================
+// MOSTRAR EXÁMENES CLÍNICOS
+// ============================================
+
 function mostrarExamenes() {
-    document.getElementById("resultado").innerHTML = `
-        <h3>Exámenes clínicos</h3>
-        <p>Aquí aparecerán los exámenes realizados por los pacientes.</p>
-    `;
+    const resultado = document.getElementById("resultado");
+
+    if (resultado) {
+        resultado.innerHTML = `
+            <h3>Exámenes clínicos</h3>
+            <p>Aquí aparecerán los exámenes realizados por los pacientes.</p>
+        `;
+    }
 }
 
-// Mostrar estado del paciente
+// ============================================
+// MOSTRAR ESTADO DEL PACIENTE
+// ============================================
+
 function mostrarEstado() {
-    document.getElementById("resultado").innerHTML = `
-        <h3>Estado del paciente</h3>
-        <p>Consulta si un paciente está activo o inactivo.</p>
-    `;
+    const resultado = document.getElementById("resultado");
+
+    if (resultado) {
+        resultado.innerHTML = `
+            <h3>Estado del paciente</h3>
+            <p>Consulta si un paciente está activo o inactivo.</p>
+        `;
+    }
 }
 
-// Enviar mensaje del formulario a la API
+// ============================================
+// ENVIAR MENSAJE A LA API
+// ============================================
+
 async function enviarMensaje(event) {
+
+    // Evitar que el formulario recargue la página
     event.preventDefault();
 
-    const nombre = document.getElementById("nombre").value.trim();
-    const correo = document.getElementById("correo").value.trim();
-    const mensaje = document.getElementById("mensaje").value.trim();
+    // Obtener los campos del formulario
+    const nombreInput = document.getElementById("nombre");
+    const correoInput = document.getElementById("correo");
+    const mensajeInput = document.getElementById("mensaje");
 
-    if (!nombre || !correo || !mensaje) {
-        alert("Por favor completa todos los campos.");
+    // Verificar que existan los campos
+    if (!nombreInput || !correoInput || !mensajeInput) {
+        alert("Error: no se encontraron los campos del formulario.");
+        return;
+    }
+
+    // Obtener valores
+    const nombre = nombreInput.value.trim();
+    const correo = correoInput.value.trim();
+    const mensaje = mensajeInput.value.trim();
+
+    // Validar campos
+    if (nombre === "" || correo === "" || mensaje === "") {
+        alert("Por favor, completa todos los campos.");
         return;
     }
 
     try {
-        const respuesta = await fetch(`${API_URL}/api/contactos`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nombre: nombre,
-                correo: correo,
-                mensaje: mensaje
-            })
-        });
 
+        console.log("Enviando mensaje a la API...");
+
+        const respuesta = await fetch(
+            `${API_URL}/api/contactos`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nombre: nombre,
+                    correo: correo,
+                    mensaje: mensaje
+                })
+            }
+        );
+
+        // Mostrar error si la API responde con error
         if (!respuesta.ok) {
-            throw new Error(`Error HTTP: ${respuesta.status}`);
+
+            const textoError = await respuesta.text();
+
+            console.error(
+                "Error de la API:",
+                respuesta.status,
+                textoError
+            );
+
+            throw new Error(
+                `La API respondió con código ${respuesta.status}`
+            );
         }
 
+        // Obtener respuesta de la API
         const datos = await respuesta.json();
-
-        alert("¡Mensaje enviado correctamente!");
-
-        // Limpiar formulario
-        document.getElementById("nombre").value = "";
-        document.getElementById("correo").value = "";
-        document.getElementById("mensaje").value = "";
 
         console.log("Respuesta de la API:", datos);
 
+        // Mensaje de éxito
+        alert("¡Mensaje enviado correctamente!");
+
+        // Limpiar formulario
+        nombreInput.value = "";
+        correoInput.value = "";
+        mensajeInput.value = "";
+
     } catch (error) {
-        console.error("Error al enviar:", error);
-        alert("No se pudo enviar el mensaje. Revisa la conexión con la API.");
+
+        console.error("Error al conectar con la API:", error);
+
+        alert(
+            "No se pudo enviar el mensaje.\n\n" +
+            "Verifica que la API esté disponible y que CORS esté configurado."
+        );
     }
 }
